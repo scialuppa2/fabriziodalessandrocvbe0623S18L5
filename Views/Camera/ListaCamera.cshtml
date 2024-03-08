@@ -1,0 +1,63 @@
+﻿@model IEnumerable<progetto_settimanaleS18L5.Models.Camera>
+
+@{
+    ViewBag.Title = "ListaCamera";
+}
+
+<div>
+    <h2 class="text-center">Lista delle Camere</h2>
+    <div class="text-center mt-3 mb-3">
+        <a href="@Url.Action("CreaCamera", "Camera")" class="btn btn-primary">Aggiungi Camera</a>
+    </div>
+    <div style="overflow-x: auto; overflow-y: auto">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdCamera)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroCamera)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descrizione)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stato)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCamera)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumeroCamera)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descrizione)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stato)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("EliminaCamera", "Camera", FormMethod.Post))
+                        {
+                            @Html.Hidden("IdCamera", item.IdCamera)
+                            <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
