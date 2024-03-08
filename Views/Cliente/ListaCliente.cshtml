@@ -1,0 +1,47 @@
+﻿@model IEnumerable<progetto_settimanaleS18L5.Models.Cliente>
+
+@{
+    ViewBag.Title = "ListaCliente";
+}
+
+<div class="container body-content">
+    <h2 class="text-center">Lista dei Clienti</h2>
+    <div class="text-center mt-3 mb-3">
+        <a href="@Url.Action("CreaCliente", "Cliente")" class="btn btn-outline-primary">Nuovo Cliente</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id Cliente</th>
+                <th>Codice Fiscale</th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Citta</th>
+                <th>Provincia</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th>Cellulare</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IdCliente</td>
+                    <td>@item.CodiceFiscale</td>
+                    <td>@item.Cognome</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Citta</td>
+                    <td>@item.Provincia</td>
+                    <td>@item.Email</td>
+                    <td>@item.Telefono</td>
+                    <td>@item.Cellulare</td>
+                    <td class="d-flex">
+                        @Html.ActionLink("Dettagli", "DettagliCliente", new { IdCliente = item.IdCliente, CodiceFiscale = item.CodiceFiscale }, new { @class = "btn btn-outline-secondary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

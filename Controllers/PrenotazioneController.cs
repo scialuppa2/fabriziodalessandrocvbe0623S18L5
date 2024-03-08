@@ -11,15 +11,26 @@ namespace progetto_settimanaleS18L5.Controllers
     {
         public ActionResult CreaPrenotazione(string CodiceFiscale)
         {
-            List<SelectListItem> camereDisponibili = Camera.GetCamereDisponibili();
+            List<Cliente> listaClienti = new Cliente().ListaClienti();
+            List<SelectListItem> listaCamere = Camera.GetCamereDisponibili();
 
             Prenotazione model = new Prenotazione();
             model.CodiceFiscale = CodiceFiscale;
+            model.DataInizioSoggiorno = DateTime.Today;
+            model.DataFineSoggiorno = DateTime.Today;
+            model.DataPrenotazione = DateTime.Today;
 
-            ViewBag.ListaCamere = camereDisponibili;
+
+            List<SelectListItem> listaClientiSelectList = listaClienti
+                .Select(c => new SelectListItem { Text = $"{c.Nome} {c.Cognome}", Value = c.CodiceFiscale })
+                .ToList();
+
+            ViewBag.ListaClienti = listaClientiSelectList;
+            ViewBag.ListaCamere = listaCamere;
 
             return View(model);
         }
+
 
         [HttpPost]
         public ActionResult CreaPrenotazione(Prenotazione model)

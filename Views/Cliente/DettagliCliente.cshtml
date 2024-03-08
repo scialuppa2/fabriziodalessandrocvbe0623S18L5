@@ -1,0 +1,43 @@
+﻿@model progetto_settimanaleS18L5.Models.Cliente
+
+@{
+    ViewBag.Title = "DettagliCliente";
+}
+
+<h2>Dettagli Cliente</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Codice Fiscale</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.CodiceFiscale)</dd>
+
+        <dt class="col-sm-3">Cognome</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Cognome)</dd>
+
+        <dt class="col-sm-3">Nome</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Nome)</dd>
+
+        <dt class="col-sm-3">Città</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Citta)</dd>
+
+        <dt class="col-sm-3">Provincia</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Provincia)</dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+        <dt class="col-sm-3">Telefono</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Telefono)</dd>
+
+        <dt class="col-sm-3">Cellulare</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Cellulare)</dd>
+    </dl>
+</div>
+
+<div>
+    @Html.ActionLink("Modifica Cliente", "ModificaCliente", "Cliente", new { IdCliente = Model.IdCliente }, new { @class = "btn btn-outline-success" })
+    @Html.ActionLink("Elimina Cliente", "EliminaCliente", "Cliente", new { IdCliente = Model.IdCliente }, new { @class = "btn btn-outline-danger" })
+    @Html.ActionLink("Torna alla lista", "ListaCliente", null, new { @class = "btn btn-outline-secondary" })
+</div>
+
+

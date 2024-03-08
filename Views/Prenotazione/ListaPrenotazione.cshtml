@@ -1,0 +1,44 @@
+﻿@model IEnumerable<progetto_settimanaleS18L5.Models.Prenotazione>
+
+@{
+    ViewBag.Title = "ListaPrenotazioni";
+}
+
+<h2 class="text-center">Lista delle Prenotazioni</h2>
+
+<div class="text-center mt-3 mb-3">
+    <a href="@Url.Action("CreaPrenotazione", "Prenotazione")" class="btn btn-outline-primary">Nuova Prenotazione</a>
+</div>
+<div style="overflow-x: auto; overflow-y: auto">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codice Fiscale</th>
+                <th>Numero Camera</th>
+                <th>Data Prenotazione</th>
+                <th>Data Inizio Soggiorno</th>
+                <th>Data Fine Soggiorno</th>
+                <th>Tariffa</th>
+                <th>Opzioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prenotazione in Model)
+            {
+                <tr>
+                    <td>@prenotazione.IdPrenotazione</td>
+                    <td>@prenotazione.CodiceFiscale</td>
+                    <td>@prenotazione.NumeroCamera</td>
+                    <td>@prenotazione.DataPrenotazione.ToString("dd/MM/yyyy")</td>            
+                    <td>@prenotazione.DataInizioSoggiorno.ToString("dd/MM/yyyy")</td>
+                    <td>@prenotazione.DataFineSoggiorno.ToString("dd/MM/yyyy")</td>
+                    <td>@prenotazione.TariffaApplicata</td>
+                    <td>
+                        @Html.ActionLink("Dettagli", "DettagliPrenotazione", new { IdPrenotazione = prenotazione.IdPrenotazione }, new { @class = "btn btn-outline-secondary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

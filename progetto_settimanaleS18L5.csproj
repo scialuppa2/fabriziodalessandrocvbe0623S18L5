@@ -189,11 +189,16 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Camera\ListaCamera.cshtml" />
     <Content Include="Views\Camera\CreaCamera.cshtml" />
+    <Content Include="Views\Cliente\ListaCliente.cshtml" />
+    <Content Include="Views\Cliente\CreaCliente.cshtml" />
+    <Content Include="Views\Cliente\DettagliCliente.cshtml" />
+    <Content Include="Views\Cliente\ModificaCliente.cshtml" />
+    <Content Include="Views\Prenotazione\ListaPrenotazione.cshtml" />
+    <Content Include="Views\Prenotazione\CreaPrenotazione.cshtml" />
+    <Content Include="Views\Prenotazione\DettagliPrenotazione.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cliente\" />
-    <Folder Include="Views\Prenotazione\" />
     <Folder Include="Views\ServizioAggiuntivo\" />
   </ItemGroup>
   <ItemGroup>

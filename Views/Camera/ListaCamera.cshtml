@@ -7,10 +7,10 @@
 <div>
     <h2 class="text-center">Lista delle Camere</h2>
     <div class="text-center mt-3 mb-3">
-        <a href="@Url.Action("CreaCamera", "Camera")" class="btn btn-primary">Aggiungi Camera</a>
+        <a href="@Url.Action("CreaCamera", "Camera")" class="btn btn-outline-primary">Aggiungi Camera</a>
     </div>
     <div style="overflow-x: auto; overflow-y: auto">
-        <table class="table table-bordered">
+        <table class="table table-striped">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.IdCamera)
@@ -52,7 +52,7 @@
                         @using (Html.BeginForm("EliminaCamera", "Camera", FormMethod.Post))
                         {
                             @Html.Hidden("IdCamera", item.IdCamera)
-                            <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
+                            <button type="submit" class="btn btn-outline-danger btn-sm">Elimina</button>
                         }
 
                     </td>

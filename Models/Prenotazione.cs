@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,9 +13,19 @@ namespace progetto_settimanaleS18L5.Models
         public int IdPrenotazione { get; set; }
         public String CodiceFiscale { get; set; }
         public int NumeroCamera { get; set; }
+        [Display(Name = "Data Prenotazione")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataPrenotazione { get; set; }
         public int Anno { get; set; }
+        [Display(Name = "Data Inizio Soggiorno")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataInizioSoggiorno { get; set; }
+
+        [Display(Name = "Data Fine Soggiorno")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataFineSoggiorno { get; set; }
         public decimal CaparraConfirmatoria { get; set; }
         public decimal TariffaApplicata { get; set; }
