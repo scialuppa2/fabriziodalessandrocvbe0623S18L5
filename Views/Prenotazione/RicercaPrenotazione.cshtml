@@ -1,35 +1,59 @@
 ﻿@{
-    ViewBag.Title = "Ricerca Prenotazioni";
+    ViewBag.Title = "Ricerca Prenotazione Cliente";
 }
 
-<h2>Ricerca Prenotazioni</h2>
-
-<div>
-    <label for="codiceFiscale">Codice Fiscale:</label>
-    <input type="text" id="codiceFiscale" />
-    <button id="btnSearch" class="btn btn-outline-primary">Cerca</button>
+<h2>Ricerca Prenotazione Cliente</h2>
+<div class="form-group">
+    <label for="CodiceFiscale">Codice Fiscale:</label>
+    <input type="text" id="codiceFiscale" class="form-control" placeholder="Inserisci il codice fiscale" />
 </div>
+<button id="cercaPrenotazioni" class="btn btn-outline-success my-3">Cerca Prenotazioni</button>
 
-<div id="searchResults" style="margin-top: 20px;"></div>
+<div id="risultatiPrenotazioni" class="my-5"></div>
 
-@section scripts {
+@section Scripts {
+
     <script>
-        $(document).ready(function () {
-            $("#btnSearch").click(function () {
-                var codiceFiscale = $("#codiceFiscale").val();
-                $.ajax({
-                    url: '@Url.Action("RicercaPrenotazione", "Prenotazione")',
-                    type: 'GET',
-                    data: { codiceFiscale: codiceFiscale },
-                    success: function (data) {
-                        $("#searchResults").html(data);
-                    },
-                    error: function () {
-                        $("#searchResults").html("Si è verificato un errore durante la ricerca.");
-                    }
-                });
-            });
+     $(document).ready(function () {
+    $("#cercaPrenotazioni").click(function () {
+        var CodiceFiscale = $("#CodiceFiscale").val();
+        if(CodiceFiscale === '') {
+            alert('Per favore, inserisci un codice fiscale.');
+            return;
+        }
+        $.ajax({
+            url: '@Url.Action("RicercaPrenotazioneCliente", "Prenotazioni")',
+            type: 'GET',
+            data: { CodiceFiscale: CodiceFiscale },
+            success: function (data) {
+                $("#risultatiPrenotazioni").empty();
+                if(data && data.length > 0) {
+                    var risultatiHtml = '<ul>';
+                    $.each(data, function(i, prenotazione) {
+                        var dataInizioSoggiorno = formatDate(prenotazione.DataInizioSoggiorno);
+                        var dataFineSoggiorno = formatDate(prenotazione.DataFineSoggiorno);
+                        risultatiHtml += '<li>Id: ' + prenotazione.IdPrenotazione + ', Numero Camera: ' + prenotazione.NumeroCamera + ', Data Inizio: ' + dataInizioSoggiorno + ', Data Fine: ' + dataFineSoggiorno + ', Tariffa Applicata: €' + prenotazione.TariffaApplicata.toFixed(2) + '</li>';
+                    });
+                    risultatiHtml += '</ul>';
+                    $("#risultatiPrenotazioni").html(risultatiHtml);
+                } else {
+                    $("#risultatiPrenotazioni").html('<p>Nessuna prenotazione trovata per il codice fiscale fornito.</p>');
+                }
+            },
+            error: function () {
+                $("#risultatiPrenotazioni").html('<p>Errore nella ricerca delle prenotazioni. Assicurati di aver inserito un codice fiscale valido.</p>');
+            }
         });
+    });
+
+    function formatDate(dateString) {
+        var date = new Date(dateString);
+        var day = ('0' + date.getDate()).slice(-2);
+        var month = ('0' + (date.getMonth() + 1)).slice(-2);
+        var year = date.getFullYear();
+        return day + '-' + month + '-' + year;
+    }
+});
     </script>
 }
 
