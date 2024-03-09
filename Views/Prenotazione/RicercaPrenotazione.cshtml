@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Ricerca Prenotazioni";
+}
+
+<h2>Ricerca Prenotazioni</h2>
+
+<div>
+    <label for="codiceFiscale">Codice Fiscale:</label>
+    <input type="text" id="codiceFiscale" />
+    <button id="btnSearch" class="btn btn-outline-primary">Cerca</button>
+</div>
+
+<div id="searchResults" style="margin-top: 20px;"></div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#btnSearch").click(function () {
+                var codiceFiscale = $("#codiceFiscale").val();
+                $.ajax({
+                    url: '@Url.Action("RicercaPrenotazione", "Prenotazione")',
+                    type: 'GET',
+                    data: { codiceFiscale: codiceFiscale },
+                    success: function (data) {
+                        $("#searchResults").html(data);
+                    },
+                    error: function () {
+                        $("#searchResults").html("Si è verificato un errore durante la ricerca.");
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+

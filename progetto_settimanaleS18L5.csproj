@@ -199,6 +199,7 @@
     <Content Include="Views\ServizioAggiuntivo\ListaServizioAggiuntivo.cshtml" />
     <Content Include="Views\ServizioAggiuntivo\CreaServizioAggiuntivo.cshtml" />
     <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Prenotazione\RicercaPrenotazione.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

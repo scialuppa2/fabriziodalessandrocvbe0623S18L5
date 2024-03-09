@@ -30,7 +30,7 @@
                     <td>@prenotazione.IdPrenotazione</td>
                     <td>@prenotazione.CodiceFiscale</td>
                     <td>@prenotazione.NumeroCamera</td>
-                    <td>@prenotazione.DataPrenotazione.ToString("dd/MM/yyyy")</td>            
+                    <td>@prenotazione.DataPrenotazione.ToString("dd/MM/yyyy")</td>
                     <td>@prenotazione.DataInizioSoggiorno.ToString("dd/MM/yyyy")</td>
                     <td>@prenotazione.DataFineSoggiorno.ToString("dd/MM/yyyy")</td>
                     <td>@prenotazione.TariffaApplicata</td>
@@ -42,4 +42,10 @@
             }
         </tbody>
     </table>
+    <div>
+        <p>Totale prenotazioni con pensione completa: @ViewBag.TotalePensioneCompleta</p>
+    </div>
+
+    <button type="button" onclick="location.href='@Url.Action("RicercaPrenotazione", "Prenotazione")'" class="btn btn-outline-secondary">Ricerca Prenotazione</button>
+
 </div>
