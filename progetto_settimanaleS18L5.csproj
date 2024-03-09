@@ -196,10 +196,12 @@
     <Content Include="Views\Prenotazione\ListaPrenotazione.cshtml" />
     <Content Include="Views\Prenotazione\CreaPrenotazione.cshtml" />
     <Content Include="Views\Prenotazione\DettagliPrenotazione.cshtml" />
+    <Content Include="Views\ServizioAggiuntivo\ListaServizioAggiuntivo.cshtml" />
+    <Content Include="Views\ServizioAggiuntivo\CreaServizioAggiuntivo.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ServizioAggiuntivo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

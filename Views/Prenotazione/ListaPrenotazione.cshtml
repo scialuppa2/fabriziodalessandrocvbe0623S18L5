@@ -35,7 +35,8 @@
                     <td>@prenotazione.DataFineSoggiorno.ToString("dd/MM/yyyy")</td>
                     <td>@prenotazione.TariffaApplicata</td>
                     <td>
-                        @Html.ActionLink("Dettagli", "DettagliPrenotazione", new { IdPrenotazione = prenotazione.IdPrenotazione }, new { @class = "btn btn-outline-secondary" })
+                        @Html.ActionLink("Dettagli", "DettagliPrenotazione", "Prenotazione", new { idPrenotazione = prenotazione.IdPrenotazione }, new { @class = "btn btn-outline-secondary" })
+
                     </td>
                 </tr>
             }

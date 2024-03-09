@@ -89,9 +89,13 @@ namespace progetto_settimanaleS18L5.Controllers
                 return HttpNotFound();
             }
 
+            TimeSpan durataSoggiorno = prenotazione.DataFineSoggiorno - prenotazione.DataInizioSoggiorno;
+            int giorniSoggiorno = durataSoggiorno.Days;
+            decimal importoSoggiorno = giorniSoggiorno * prenotazione.TariffaApplicata;
+
             decimal importoServiziAggiuntivi = ServizioAggiuntivo.GetTotaleServiziAggiuntivi(IdPrenotazione);
 
-            decimal importoDaSaldare = prenotazione.TariffaApplicata - prenotazione.CaparraConfirmatoria + importoServiziAggiuntivi;
+            decimal importoDaSaldare = importoSoggiorno + importoServiziAggiuntivi - prenotazione.CaparraConfirmatoria;
 
             List<ServizioAggiuntivo> serviziAggiuntivi = ServizioAggiuntivo.GetServiziAggiuntiviByIdPrenotazione(IdPrenotazione);
 

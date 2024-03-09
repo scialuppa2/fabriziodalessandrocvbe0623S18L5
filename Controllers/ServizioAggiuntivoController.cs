@@ -15,6 +15,8 @@ namespace progetto_settimanaleS18L5.Controllers
         {
             ServizioAggiuntivo model = new ServizioAggiuntivo();
             model.ServiziAggiuntivi = ServizioAggiuntivo.GetListaServiziAggiuntivi();
+            model.DataServizio = DateTime.Today;
+
             return View(model);
         }
 
@@ -43,19 +45,6 @@ namespace progetto_settimanaleS18L5.Controllers
             }
 
             return RedirectToAction("ListaServizioAggiuntivo", new { IdPrenotazione });
-        }
-
-
-        [HttpGet]
-        public ActionResult DettaglioServizioAggiuntivo(int IdServizio)
-        {
-            var dettaglioServizio = new ServizioAggiuntivo().GetServizioAggiuntivoById(IdServizio);
-
-            if (dettaglioServizio != null)
-            {
-                return View(dettaglioServizio);
-            }
-            return HttpNotFound();
         }
 
         [HttpGet]

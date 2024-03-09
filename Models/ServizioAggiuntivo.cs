@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,6 +13,10 @@ namespace progetto_settimanaleS18L5.Models
     {
         public int IdServizio { get; set; }
         public String Servizio { get; set; }
+
+        [Display(Name = "Data Servizio")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataServizio { get; set; }
         public int Quantita { get; set; }
         public decimal Prezzo { get; set; }

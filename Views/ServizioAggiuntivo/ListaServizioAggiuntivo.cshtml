@@ -1,0 +1,67 @@
+﻿@model IEnumerable<progetto_settimanaleS18L5.Models.ServizioAggiuntivo>
+
+@{
+    ViewBag.Title = "ListaServizioAggiuntivo";
+}
+
+<div>
+    <h2 class="text-center">Lista dei servizi acquistati</h2>
+
+    <div style="overflow-x: auto; overflow-y: auto">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdServizio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servizio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataServizio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantita)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prezzo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdPrenotazione)
+                </th>
+                <th>Azioni</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdServizio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Servizio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataServizio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantita)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prezzo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdPrenotazione)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Elimina", "EliminaServizioAggiuntivo", new { IdServizio = item.IdServizio, IdPrenotazione = item.IdPrenotazione }, new { @class = "btn btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        @Html.ActionLink("Torna alle prenotazioni", "ListaPrenotazione", "Prenotazione", null, new { @class = "btn btn-outline-secondary" })
+
+
+
+

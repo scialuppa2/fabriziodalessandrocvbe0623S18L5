@@ -20,12 +20,12 @@
         @Html.DropDownListFor(model => model.NumeroCamera, listaCamere, "Seleziona una camera", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.NumeroCamera, "", new { @class = "text-danger" })
     </div>
-    <div>
+    <div class="form-group">
         @Html.LabelFor(model => model.DataPrenotazione, htmlAttributes: new { @class = "control-label col-md-2" })
         @Html.EditorFor(model => model.DataPrenotazione, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.DataPrenotazione, "", new { @class = "text-danger" })
     </div>
-    <div>
+    <div class="form-group">
         @Html.LabelFor(model => model.Anno, htmlAttributes: new { @class = "control-label col-md-2" })
         @Html.EditorFor(model => model.Anno, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.Anno, "", new { @class = "text-danger" })

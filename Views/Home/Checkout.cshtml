@@ -1,0 +1,57 @@
+﻿@model progetto_settimanaleS18L5.Models.Checkout
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+
+<div>
+    <h4>Dettagli Prenotazione</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Nome Titolare:</dt>
+        <dd class="col-sm-9">@Model.NomeTitolare</dd>
+
+        <dt class="col-sm-3">Numero Stanza:</dt>
+        <dd class="col-sm-9">@Model.NumeroStanza</dd>
+
+        <dt class="col-sm-3">Data Check-in:</dt>
+        <dd class="col-sm-9">@Model.DataCheckIn.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Data Check-out:</dt>
+        <dd class="col-sm-9">@Model.DataCheckOut.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Tariffa Applicata:</dt>
+        <dd class="col-sm-9">@Model.TariffaApplicata</dd>
+
+        <dt class="col-sm-3">Caparra Confirmatoria:</dt>
+        <dd class="col-sm-9">@Model.CaparraConfirmatoria</dd>
+
+        <dt class="col-sm-3">Servizi Aggiuntivi:</dt>
+        <dd class="col-sm-9">
+            <ul>
+                @foreach (var servizio in Model.ServiziAggiuntivi)
+                {
+                    <li>@servizio.Servizio - @servizio.Prezzo</li>
+                }
+            </ul>
+        </dd>
+
+        <dt class="col-sm-3">Importo Totale Da Saldare:</dt>
+        <dd class="col-sm-9">@Model.ImportoDaSaldare</dd>
+    </dl>
+</div>
+
+<div>
+    <button type="button" class="btn btn-outline-success" onclick="completaCheckout()">Completa Checkout</button>
+
+    @Html.ActionLink("Torna alle prenotazioni", "ListaPrenotazione", "Prenotazione", null, new { @class = "btn btn-outline-secondary" })
+</div>
+
+<script>
+    function completaCheckout() {
+        alert("Checkout completato con successo!");
+        window.location.href = '/Home/Index';
+    }
+</script>

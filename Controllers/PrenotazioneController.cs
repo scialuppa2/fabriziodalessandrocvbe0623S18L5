@@ -46,6 +46,8 @@ namespace progetto_settimanaleS18L5.Controllers
         public ActionResult DettagliPrenotazione(int IdPrenotazione)
         {
             Prenotazione prenotazione = Prenotazione.GetPrenotazioneById(IdPrenotazione);
+            List<ServizioAggiuntivo> serviziAggiuntivi = ServizioAggiuntivo.GetServiziAggiuntiviByIdPrenotazione(IdPrenotazione);
+
 
             if (prenotazione != null)
             {
